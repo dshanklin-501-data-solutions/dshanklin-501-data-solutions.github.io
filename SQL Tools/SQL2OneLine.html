@@ -1,0 +1,117 @@
+<html>
+<head>
+  
+<style type="text/css">
+
+div {
+  clear: both;
+}
+  
+#t1 {
+  width: 800px;
+  height: 200px;
+  font: Consolas;
+  background-color: #FFEEEE;
+}
+
+#t2 {
+  width: 800px;
+  height: 200px;
+  font: Consolas;
+  background-color: #EEFFEE;
+}
+
+#t3 {
+  width: 800px;
+  height: 100px;
+  font: Consolas;
+  background-color: #EEFFEE;
+}
+
+#t4 {
+  width: 800px;
+  height: 200px;
+  font: Consolas;
+  background-color: #EEFFEE;
+}
+  
+</style>
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+<script>
+
+  {
+  var sql1 = 
+`/* test query
+on multiple lines*/
+select * -- this is a comment
+       'this is something "with quotes" in it' as field2
+from tbl1;
+
+select '********';
+
+select *
+from howdy_table;
+
+        `;
+}
+
+$('#t1').val(sql1);
+
+$('#t1').on('input', function() {
+  $('#t2').val(
+    $(this).val()
+      .replace(/(\/\*[^*]*\*\/)|(\/\/[^*]*)|(--[^.].*)/gm, '') // without comments
+      .replace(/^\s*\n/gm, "") // without linebreak
+      .replace(/^\s+/gm, "") // without whitespace
+      .replace(/\n/g, " ") // replace line breaks with spaces
+      .replace(/"/g, "\\\"") // replace line breaks with spaces
+  );
+  
+  var mdTables = [];
+
+  $('#t2').val().split(';').forEach( function(q, i) {
+    if( left(q, 10) != 'select \'**' && q.toLowerCase().includes('from')) {
+      mdTables.push(
+        [
+          'Query ' + (i+1),
+          q
+          .replace(/\\"/g, "\"") // don't double-escape double quotes
+        ]
+      );
+    }
+  });
+  
+  $('#t3').val('var sql = "'
+                + $('#t2').val()
+                + '";');
+  
+  $('#t4').val(JSON.stringify(mdTables));
+  
+});
+
+function left(str, chr) {
+  return str.slice(0 , chr );
+}
+
+$( "#t1" ).trigger( "input" );
+  
+  
+  </script>
+  
+<body>
+  
+<div>Source SQL:<br />
+  <textarea id="t1">fdasfdsafdsa</textarea>
+</div>
+<div>Single-line sql (escaped for Javascript):<br /> <textarea id="t2"></textarea>
+</div>
+<div>Javascript variable (encapsulated in double-quotes, and double-quotes are escaped properly):<br /> <textarea id="t3"></textarea>
+</div>
+<div>Array version (splits each query into its own array element for pushing into mdTables array):<br /> <textarea id="t4"></textarea>
+</div>
+  
+</body>
+</html>

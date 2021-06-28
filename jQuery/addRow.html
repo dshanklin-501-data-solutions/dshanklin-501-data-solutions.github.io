@@ -46,7 +46,7 @@ $(window).on('load', function() {
     // Testing -- output the id to the clone
     newRow.children(".text1").html('ID=' + newRow.attr("id") );
     newRow.children("img").remove();
-    newRow.append('<img src="https://picsum.photos/200" />');
+    newRow.append('<img src="https://picsum.photos/75?' + getRandomInt(50000000) '" />');
   });
 
   $(document).on('click', '.btnDelete', function() {
@@ -62,6 +62,10 @@ $(window).on('load', function() {
   function highRowID(r) {
     return parseInt(r.parent().attr('highRowID'))
   }
+  
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
  // code here
 });
@@ -75,7 +79,7 @@ $(window).on('load', function() {
      <input type="button" value="add" class="btnAdd" />
      <input type="button" value="delete" class="btnDelete" />
      <div class="text1">I am what I am!</div>
-     <img src="https://picsum.photos/50" />
+     <img src="https://picsum.photos/75" />
   </div>
 </div>
   

@@ -44,7 +44,7 @@ $(window).on('load', function() {
     newRow.insertAfter(oldRow);
 
     // Testing -- output the id to the clone
-    newRow.append( 'ID=' + newRow.attr("id") )
+    newRow.children(".text1").html('ID=' + newRow.attr("id") );
   });
 
   $(document).on('click', '.btnDelete', function() {
@@ -72,7 +72,7 @@ $(window).on('load', function() {
   <div id="DataPointsId.4432.432.1" class="dp">
      <input type="button" value="add" class="btnAdd" />
      <input type="button" value="delete" class="btnDelete" />
-     <div>I am what I am!</div>
+     <div class="text1">I am what I am!</div>
   </div>
 </div>
   

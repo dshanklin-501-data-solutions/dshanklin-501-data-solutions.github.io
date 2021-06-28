@@ -1,0 +1,79 @@
+<html>
+<head>
+  
+<style type="text/css">
+
+#tbl1 {
+  border: 3px solid black;
+  padding: 5px;
+}
+
+
+.dp {
+  border: 1px dashed black;
+  padding: 5px;
+  /*overflow: auto;*/
+  /*white-space: nowrap;*/
+}
+
+.dp > div {
+  /*display: inline-block;*/
+}
+  
+</style>
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+<script>
+  
+$(window).on('load', function() {
+
+  $(document).on('click', '.btnAdd', function() {
+    oldRow = $(this).parent();
+    newRow = oldRow.clone();
+
+    // Set new row ID
+    oldRow.parent().attr('highRowID', highRowID(oldRow) + 1);
+
+    // Increment the clone
+    newRow.attr("id", incrementRowID(oldRow, highRowID(oldRow) + 0));
+
+    // Add the clone
+    newRow.appendTo(oldRow.parent());
+
+    // Testing -- output the id to the clone
+    newRow.append( 'ID=' + newRow.attr("id") )
+  });
+
+  $(document).on('click', '.btnDelete', function() {
+    $(this).parent().remove();
+  });
+
+  function incrementRowID(ob, i) {
+    idPre = ob.attr("id").split('.');
+    oldId = idPre.pop();
+    return idPre.join('.') + '.' + i;
+  }
+
+  function highRowID(r) {
+    return parseInt(r.parent().attr('highRowID'))
+  }
+
+ // code here
+});
+  
+  </script>
+  
+<body>
+  
+<div id="tbl1" highRowID="1">
+  <div id="DataPointsId.4432.432.1" class="dp">
+     <input type="button" value="add" class="btnAdd" />
+     <input type="button" value="delete" class="btnDelete" />
+     <div>I am what I am!</div>
+  </div>
+</div>
+  
+</body>
+</html>

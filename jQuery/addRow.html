@@ -40,7 +40,8 @@ $(window).on('load', function() {
     newRow.attr("id", incrementRowID(oldRow, highRowID(oldRow) + 0));
 
     // Add the clone
-    newRow.appendTo(oldRow.parent());
+    //newRow.appendTo(oldRow.parent());
+    newRow.insertAfter(oldRow);
 
     // Testing -- output the id to the clone
     newRow.append( 'ID=' + newRow.attr("id") )

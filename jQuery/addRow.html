@@ -46,7 +46,7 @@ $(window).on('load', function() {
     // Testing -- output the id to the clone
     newRow.children(".text1").html('ID=' + newRow.attr("id") );
     newRow.children("img").remove();
-    newRow.append('<img src="https://picsum.photos/75?' + getRandomInt(50000000) '" />');
+    newRow.append('<img src="https://picsum.photos/75?' + getRandomInt(50000000) + '" />');
   });
 
   $(document).on('click', '.btnDelete', function() {

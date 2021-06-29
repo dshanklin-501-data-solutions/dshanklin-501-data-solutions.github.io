@@ -118,8 +118,9 @@ $(window).on('load', function() {
       //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
     });
 
-    $(document).off('mouseup', '.btnDelete');
-    $(document).on('mouseup', '.btnDelete', function() {
+    $(document).off('mouseup');
+    //$(document).on('mouseup', '.btnDelete', function() {
+    $(document).mouseup(function() {
       $('.btnDelete').parent().removeClass("mousedowndelete");
       //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
     });

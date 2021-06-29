@@ -82,6 +82,14 @@ $(window).on('load', function() {
     // Add the clone
     //newRow.appendTo(oldRow.parent());
     newRow.insertAfter(oldRow);
+    
+    // Animate color change
+    newrow.css("background-color", "#66DDDD");
+    newRow.animate({
+          backgroundColor: "#fff",
+          //color: "#000",
+          //width: 240
+        }, 1000 );
 
     // Testing -- output the id to the clone
     //newRow.children(".text1").html('ID=' + newRow.attr("id") );

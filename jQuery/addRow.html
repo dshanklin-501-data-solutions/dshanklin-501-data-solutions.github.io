@@ -60,7 +60,8 @@ $(window).on('load', function() {
     newRow.insertAfter(oldRow);
 
     // Testing -- output the id to the clone
-    newRow.children(".text1").html('ID=' + newRow.attr("id") );
+    //newRow.children(".text1").html('ID=' + newRow.attr("id") );
+    newRow.children("input[type=text]").html('ID=' + newRow.attr("id") );
     newRow.children("img").remove();
     newRow.append('<img src="https://picsum.photos/75?' + getRandomInt(50000000) + '" />');
   });

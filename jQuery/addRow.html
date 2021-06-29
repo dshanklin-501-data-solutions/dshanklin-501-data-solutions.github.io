@@ -32,6 +32,10 @@
   width: 450px;
 }
   
+.mousedowndelete {
+    background-color: #CC6666;
+}
+  
 </style>
   
   
@@ -83,13 +87,13 @@ $(window).on('load', function() {
     //newRow.appendTo(oldRow.parent());
     newRow.insertAfter(oldRow);
     
-    // Animate color change
+    // Animate color change and then remove color when done
     newRow.css("background-color", "#66DDDD");
     newRow.animate({
           backgroundColor: "#fff",
           //color: "#000",
           //width: 240
-        }, 1000 );
+        }, 1000 ).css("background-color", "");
 
     // Testing -- output the id to the clone
     //newRow.children(".text1").html('ID=' + newRow.attr("id") );
@@ -101,6 +105,18 @@ $(window).on('load', function() {
   $(document).on('click', '.btnDelete', function() {
     $(this).parent().remove();
   });
+  
+  $(document).on('mousedown', '.btnDelete', function() {
+    $(this).parent().addClass("mousedowndelete");
+    //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
+  });
+  
+  $(document).on('mouseup', '.btnDelete', function() {
+    $(this).parent().removeClass("mousedowndelete");
+    //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
+  });
+  
+  //$(document).trigger("mouseup");
 
   function incrementRowID(ob, i) {
     idPre = ob.attr("id").split('.');

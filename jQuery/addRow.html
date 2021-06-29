@@ -56,7 +56,7 @@ $(window).on('load', function() {
   
   // Add four more rows
   for(var i = 0; i < 4; i++) {
-    addRow($('dp').last());
+    addRow($('.dp').children('.btnAdd').last());
   }
   
   $(document).on('click', '.btnAdd', function() {

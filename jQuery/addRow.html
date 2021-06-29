@@ -64,7 +64,7 @@ $(window).on('load', function() {
   });
   
   function addRow(t) {
-    oldRow = $(this).parent();
+    oldRow = t.parent();
     newRow = oldRow.clone();
 
     // Set new row ID

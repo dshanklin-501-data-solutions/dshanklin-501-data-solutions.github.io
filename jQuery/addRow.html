@@ -120,7 +120,7 @@ $(window).on('load', function() {
 
     $(document).off('mouseup', '.btnDelete');
     $(document).on('mouseup', '.btnDelete', function() {
-      $(this).parent().removeClass("mousedowndelete");
+      $('.btnDelete').parent().removeClass("mousedowndelete");
       //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
     });
   }

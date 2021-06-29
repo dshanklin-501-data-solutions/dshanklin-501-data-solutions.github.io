@@ -80,7 +80,7 @@ $(window).on('load', function() {
     // Testing -- output the id to the clone
     //newRow.children(".text1").html('ID=' + newRow.attr("id") );
     //newRow.children("img").attr('src', 'https://picsum.photos/75?' + getRandomInt(50000000));
-    newRow.children("img").attr('src', getRandomImage());
+    newRow.children("img").attr('src', getRandomImage()).attr('height', '100').attr('width', '100');
     newRow.children("input[type=text]").val('' + newRow.attr("id") );  
   }
 
@@ -120,7 +120,8 @@ $(window).on('load', function() {
      <input type="button" value="delete" class="btnDelete" />
      <div class="text1">I am what I am!</div>
      <input type="text" name="bla1" value="howdy" />
-     <img src="https://picsum.photos/75" />
+     <!--<img src="https://picsum.photos/75" />-->
+     <img src="https://dshanklin-501-data-solutions.github.io/images/1.png" />
   </div>
 </div>
   

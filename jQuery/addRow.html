@@ -53,8 +53,17 @@ $( function() {
 <script>
   
 $(window).on('load', function() {
-
+  
+  // Add four more rows
+  for(var i = 0; i < 4; i++) {
+    addRow($('dp').last());
+  }
+  
   $(document).on('click', '.btnAdd', function() {
+    addRow($(this));
+  });
+  
+  function addRow(t) {
     oldRow = $(this).parent();
     newRow = oldRow.clone();
 
@@ -71,8 +80,8 @@ $(window).on('load', function() {
     // Testing -- output the id to the clone
     //newRow.children(".text1").html('ID=' + newRow.attr("id") );
     newRow.children("img").attr('src', 'https://picsum.photos/75?' + getRandomInt(50000000));
-    newRow.children("input[type=text]").val('' + newRow.attr("id") );
-  });
+    newRow.children("input[type=text]").val('' + newRow.attr("id") );  
+  }
 
   $(document).on('click', '.btnDelete', function() {
     $(this).parent().remove();

@@ -41,7 +41,10 @@
 </style>
 <script>
 $( function() {
-  $( "#tbl1" ).sortable();
+  //$( "#tbl1" ).sortable();
+  $( "#sortable" ).sortable({
+      placeholder: "ui-state-highlight"
+    });
   $( "#tbl1" ).disableSelection();
 } );
 </script>

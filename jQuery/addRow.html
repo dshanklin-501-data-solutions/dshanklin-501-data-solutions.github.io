@@ -69,10 +69,6 @@ $(window).on('load', function() {
     addRow($('.dp').children('.btnAdd').last());
   }
   
-  $(document).on('click', '.btnAdd', function() {
-    addRow($(this));
-  });
-  
   function addRow(t) {
     oldRow = t.parent();
     newRow = oldRow.clone();
@@ -99,22 +95,30 @@ $(window).on('load', function() {
     //newRow.children(".text1").html('ID=' + newRow.attr("id") );
     //newRow.children("img").attr('src', 'https://picsum.photos/75?' + getRandomInt(50000000));
     newRow.children("img").attr('src', getRandomImage()).attr('height', '100').attr('width', '100');
-    newRow.children("input[type=text]").val('' + newRow.attr("id") );  
+    newRow.children("input[type=text]").val('' + newRow.attr("id") );
+    
+    eventHandlerRefresh();
   }
+  
+  function eventHandlerRefresh() {
+    $(document).on('click', '.btnAdd', function() {
+      addRow($(this));
+    });
 
-  $(document).on('click', '.btnDelete', function() {
-    $(this).parent().remove();
-  });
-  
-  $(document).on('mousedown', '.btnDelete', function() {
-    $(this).parent().addClass("mousedowndelete");
-    //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
-  });
-  
-  $(document).on('mouseup', '.btnDelete', function() {
-    $(this).parent().removeClass("mousedowndelete");
-    //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
-  });
+    $(document).on('click', '.btnDelete', function() {
+      $(this).parent().remove();
+    });
+
+    $(document).on('mousedown', '.btnDelete', function() {
+      $(this).parent().addClass("mousedowndelete");
+      //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
+    });
+
+    $(document).on('mouseup', '.btnDelete', function() {
+      $(this).parent().removeClass("mousedowndelete");
+      //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
+    });
+  }
   
   //$(document).trigger("mouseup");
 

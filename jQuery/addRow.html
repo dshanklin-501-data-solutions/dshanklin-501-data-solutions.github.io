@@ -101,19 +101,23 @@ $(window).on('load', function() {
   }
   
   function eventHandlerRefresh() {
+    $(document).off('click', '.btnAdd');
     $(document).on('click', '.btnAdd', function() {
       addRow($(this));
     });
 
+    $(document).off('click', '.btnDelete');
     $(document).on('click', '.btnDelete', function() {
       $(this).parent().remove();
     });
 
+    $(document).off('mousedown', '.btnDelete');
     $(document).on('mousedown', '.btnDelete', function() {
       $(this).parent().addClass("mousedowndelete");
       //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )
     });
 
+    $(document).off('mouseup', '.btnDelete');
     $(document).on('mouseup', '.btnDelete', function() {
       $(this).parent().removeClass("mousedowndelete");
       //$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" )

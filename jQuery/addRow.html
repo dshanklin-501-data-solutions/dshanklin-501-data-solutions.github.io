@@ -109,6 +109,7 @@ $(window).on('load', function() {
     $(document).off('click', '.btnDelete');
     $(document).on('click', '.btnDelete', function() {
       $(this).parent().remove();
+      eventHandlerRefresh();
     });
 
     $(document).off('mousedown', '.btnDelete');

@@ -79,7 +79,8 @@ $(window).on('load', function() {
 
     // Testing -- output the id to the clone
     //newRow.children(".text1").html('ID=' + newRow.attr("id") );
-    newRow.children("img").attr('src', 'https://picsum.photos/75?' + getRandomInt(50000000));
+    //newRow.children("img").attr('src', 'https://picsum.photos/75?' + getRandomInt(50000000));
+    newRow.children("img").attr('src', getRandomImage());
     newRow.children("input[type=text]").val('' + newRow.attr("id") );  
   }
 
@@ -99,6 +100,11 @@ $(window).on('load', function() {
   
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
+  }
+  
+  function getRandomImage() {
+    // 1 to 8
+    return 'https://dshanklin-501-data-solutions.github.io/images/' + (Math.floor(Math.random() * 7) + 1) + '.png';
   }
 
  // code here
